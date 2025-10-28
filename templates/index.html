@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniLang Interpreter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="header">
+            <h1>MiniLang Interpreter</h1>
+            <p>Lenguajes y Autómatas I</p>
+        </div>
+        
+        <form action="/run" method="post">
+            <div class="form-group">
+                <label for="code">Ingrese la operación:</label>
+                <textarea name="code" id="code">{% if code %}{{ code }}{% endif %}</textarea>
+            </div>
+            <button type="submit" class="btn-submit">Ejecutar</button>
+        </form>
+        
+        {% if result is defined %}
+        <div class="output-section">
+            <label>Resultado</label>
+            <div class="output-content">
+                <pre>{{ result }}</pre>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
